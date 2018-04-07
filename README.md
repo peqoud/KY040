@@ -1,8 +1,8 @@
-# KY040 Python Module
+# KY040 Python Module - GPIOZERO based
 
-> Martin O'Hanlon (martin@ohanlonweb.com)
->
-> http://www.stuffaboutcode.com
+
+Based on the work of Martin O'Hanlon
+See: https://github.com/martinohanlon/KY040
 
 A python module for reading the values from a KY040 rotary encoder module using a Raspberry Pi.
 
@@ -38,7 +38,6 @@ try:
         sleep(0.1)
 finally:
     ky040.stop()
-    GPIO.cleanup()
 ```
 
 If you're not using switch button, only listen for rotary change:
@@ -62,14 +61,15 @@ try:
         sleep(0.1)
 finally:
     ky040.stop()
-    GPIO.cleanup()
 ```
 
 Using a custom bounce time:
 
+The time is in seconds.
+
 ``` python
 # Create a KY040 and start it
-ky040 = KY040(CLOCKPIN, DATAPIN, SWITCHPIN, rotaryChange, switchPressed, rotaryBouncetime=40, switchBouncetime=40)
+ky040 = KY040(CLOCKPIN, DATAPIN, SWITCHPIN, rotaryChange, switchPressed, rotaryBouncetime=0.40, switchBouncetime=0.40)
 ky040.start()
 ```
 
@@ -80,8 +80,7 @@ ky040.start()
 
 
 ## Version history
-* 0.1 - Initial stable version
-* 0.2 - Minor improvement
+* 0.1 - Initial stable version based on work of Martin O'Hanlon
 
 ## License
 
